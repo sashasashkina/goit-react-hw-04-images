@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import css from './Searchbar.module.css';
-import { getAllImages } from '../../api/api';
+// import { getAllImages } from '../../api/api';
 import SearchbarForm from './SearchbarForm/SearchbarForm';
 import SearchbarList from './SearchbarList/SearchbarList';
 
