@@ -19,7 +19,7 @@ class SearchbarForm extends Component() {
     });
   };
   render() {
-    const { handleChange, handleSubmit } = this.state;
+    const { handleChange, handleSubmit } = this;
     const { search } = this.state;
     return (
       <header className={css.searchbar}>
