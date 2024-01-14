@@ -1,6 +1,6 @@
 import css from './SearchbarList.module.css';
 
-const SearchbarList = ({ items }) => {
+export const SearchbarList = ({ items }) => {
   const elements = items.map(({ id, webformatURL, tags }) => (
     <li key={id} className={css.item}>
       <img className={css.images} src={webformatURL} alt={tags} id={id} />
