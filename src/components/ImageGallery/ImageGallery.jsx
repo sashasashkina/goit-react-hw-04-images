@@ -13,8 +13,10 @@ class ImageGallery extends Component {
     this.setState({ loading: true });
     try {
       const { data } = await getAllImages();
+      console.log(data);
+
       this.setState({
-        images: data?.length ? data : [],
+        images: data.hits?.length ? data.hits : [],
       });
     } catch (error) {
       this.setState({
@@ -26,24 +28,19 @@ class ImageGallery extends Component {
       });
     }
   }
+
   render() {
     const { images, loading, error } = this.state;
-    const elements = images.map(({ id, webformatURL, tags, largeImageURL }) => (
+    const elements = images.map(({ id, webformatURL, tags }) => (
       <li key={id} className={css.item}>
-        <img
-          className={css.images}
-          src={webformatURL}
-          alt={tags}
-          id={id}
-          largeImageURL={largeImageURL}
-        />
+        <img className={css.images} src={webformatURL} alt={tags} id={id} />
       </li>
     ));
     return (
       <>
         {error && <p className={css.error}>{error}</p>}
         {loading && <p>...Loading</p>}
-        <ul className={css.list}>{elements}</ul>;
+        {Boolean(images.length) && <ul className={css.list}>{elements}</ul>}
       </>
     );
   }
