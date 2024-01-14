@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import css from './SearchbarForm.module.css';
 
-class SearchbarForm extends Component() {
+class SearchbarForm extends Component {
   state = {
     search: '',
   };
@@ -11,6 +11,7 @@ class SearchbarForm extends Component() {
     const { name, value } = target;
     this.setState({ [name]: value });
   };
+
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit({ ...this.state });
@@ -18,9 +19,11 @@ class SearchbarForm extends Component() {
       search: '',
     });
   };
+
   render() {
     const { handleChange, handleSubmit } = this;
     const { search } = this.state;
+
     return (
       <header className={css.searchbar}>
         <form onSubmit={handleSubmit} className={css.form}>
@@ -31,11 +34,10 @@ class SearchbarForm extends Component() {
           <input
             onChange={handleChange}
             value={search}
-            class="input"
             type="text"
-            autocomplete="off"
-            autofocus
             placeholder="Search images and photos"
+            required
+            name="search"
           />
         </form>
       </header>
