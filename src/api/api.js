@@ -7,11 +7,12 @@ const instance = axios.create({
   baseURL: 'https://pixabay.com/api/',
   params: {
     key: '40873711-279b17552f71bebdec6439352',
+    image_type: 'photo',
+    orientation: 'horizontal',
   },
 });
 
-export const searchImages = (q, page = 1, per_page = 10) => {
-  console.log(page);
+export const searchImages = (q, page = 1, per_page = 12) => {
   return instance.get('/', {
     params: {
       page,
@@ -20,13 +21,3 @@ export const searchImages = (q, page = 1, per_page = 10) => {
     },
   });
 };
-// export const searchImages = (q, page = 1) => {
-//   // return instance.get(`/?q=${q}&_limit=6&_page=${_page}`)
-//   return instance.get('/', {
-//     params: {
-//       q,
-//       limit: 6,
-//       page,
-//     },
-//   });
-// };
