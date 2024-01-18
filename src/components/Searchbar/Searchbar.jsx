@@ -3,24 +3,11 @@ import { useState } from 'react';
 import css from './Searchbar.module.css';
 
 export const Searchbar = ({ onSubmit }) => {
-  const [state, setState] = useState('');
-
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
-    setState({
-      ...state,
-      [name]: value,
-    });
-  };
+  const [search, setSearch] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    onSubmit({ ...state });
-    reset();
-  };
-
-  const reset = () => {
-    setState({ search: '' });
+    onSubmit(search);
   };
 
   return (
@@ -31,8 +18,8 @@ export const Searchbar = ({ onSubmit }) => {
         </button>
 
         <input
-          onChange={handleChange}
-          value={state.search}
+          onChange={e => setSearch(e.target.value)}
+          value={search}
           type="text"
           placeholder="Search images and photos"
           required
