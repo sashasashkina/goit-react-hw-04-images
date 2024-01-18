@@ -8,6 +8,11 @@ export const Searchbar = ({ onSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     onSubmit(search);
+    setSearch('');
+  };
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setSearch(prevImages => ({ ...prevImages, [name]: value }));
   };
 
   return (
@@ -18,7 +23,7 @@ export const Searchbar = ({ onSubmit }) => {
         </button>
 
         <input
-          onChange={e => setSearch(e.target.value)}
+          onChange={handleChange}
           value={search}
           type="text"
           placeholder="Search images and photos"
