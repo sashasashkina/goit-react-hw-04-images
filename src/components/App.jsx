@@ -35,10 +35,12 @@ export const App = () => {
     }
   }, [search, page]);
 
-  const handleSearch = ({ search }) => {
-    setSearch(search);
-    setImages([]);
-    setPage(1);
+  const handleSearch = newSearch => {
+    if (search !== newSearch) {
+      setSearch(newSearch);
+      setImages([]);
+      setPage(1);
+    }
   };
 
   const loadMore = () => setPage(prevPage => prevPage + 1);
