@@ -10,10 +10,6 @@ export const Searchbar = ({ onSubmit }) => {
     onSubmit(search);
     setSearch('');
   };
-  // const handleChange = ({ target }) => {
-  //   const { name, value } = target;
-  //   setSearch(prevImages => ({ ...prevImages, [name]: value }));
-  // };
 
   return (
     <header className={css.searchbar}>
